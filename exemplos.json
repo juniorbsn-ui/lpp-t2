@@ -1,0 +1,1233 @@
+{
+ "pedidos": [
+  {
+   "id": 1,
+   "cliente": "Ana",
+   "status": "pago",
+   "data": "2026-03-10",
+   "itens": [
+    {
+     "produto": "P",
+     "categoria": "X",
+     "quantidade": 2,
+     "preco_unitario": 100.0
+    }
+   ]
+  },
+  {
+   "id": 2,
+   "cliente": "Ana",
+   "status": "pago",
+   "data": "2026-03-20",
+   "itens": [
+    {
+     "produto": "P",
+     "categoria": "Y",
+     "quantidade": 5,
+     "preco_unitario": 120.0
+    }
+   ]
+  },
+  {
+   "id": 3,
+   "cliente": "Ana",
+   "status": "pago",
+   "data": "2026-04-02",
+   "itens": [
+    {
+     "produto": "P",
+     "categoria": "X",
+     "quantidade": 1,
+     "preco_unitario": 50.0
+    },
+    {
+     "produto": "P",
+     "categoria": "Y",
+     "quantidade": 4,
+     "preco_unitario": 10.0
+    }
+   ]
+  },
+  {
+   "id": 4,
+   "cliente": "Ana",
+   "status": "pago",
+   "data": "2026-04-09",
+   "itens": [
+    {
+     "produto": "P",
+     "categoria": "Y",
+     "quantidade": 1,
+     "preco_unitario": 30.0
+    }
+   ]
+  },
+  {
+   "id": 5,
+   "cliente": "Bia",
+   "status": "pago",
+   "data": "2026-04-15",
+   "itens": [
+    {
+     "produto": "P",
+     "categoria": "Y",
+     "quantidade": 10,
+     "preco_unitario": 5.0
+    }
+   ]
+  },
+  {
+   "id": 6,
+   "cliente": "Bia",
+   "status": "cancelado",
+   "data": "2026-04-20",
+   "itens": [
+    {
+     "produto": "P",
+     "categoria": "X",
+     "quantidade": 1,
+     "preco_unitario": 999.0
+    }
+   ]
+  },
+  {
+   "id": 7,
+   "cliente": "Caio",
+   "status": "aberto",
+   "data": "2026-05-01",
+   "itens": [
+    {
+     "produto": "P",
+     "categoria": "Y",
+     "quantidade": 1,
+     "preco_unitario": 10.0
+    }
+   ]
+  }
+ ],
+ "gerais": [
+  {
+   "funcao": "total_item",
+   "args": [
+    {
+     "produto": "P",
+     "categoria": "Y",
+     "quantidade": 4,
+     "preco_unitario": 10.0
+    }
+   ],
+   "esperado": 40.0
+  },
+  {
+   "funcao": "total_pedido",
+   "args": [
+    {
+     "id": 3,
+     "cliente": "Ana",
+     "status": "pago",
+     "data": "2026-04-02",
+     "itens": [
+      {
+       "produto": "P",
+       "categoria": "X",
+       "quantidade": 1,
+       "preco_unitario": 50.0
+      },
+      {
+       "produto": "P",
+       "categoria": "Y",
+       "quantidade": 4,
+       "preco_unitario": 10.0
+      }
+     ]
+    }
+   ],
+   "esperado": 90.0
+  },
+  {
+   "funcao": "esta_pago",
+   "args": [
+    {
+     "id": 3,
+     "cliente": "Ana",
+     "status": "pago",
+     "data": "2026-04-02",
+     "itens": [
+      {
+       "produto": "P",
+       "categoria": "X",
+       "quantidade": 1,
+       "preco_unitario": 50.0
+      },
+      {
+       "produto": "P",
+       "categoria": "Y",
+       "quantidade": 4,
+       "preco_unitario": 10.0
+      }
+     ]
+    }
+   ],
+   "esperado": true
+  },
+  {
+   "funcao": "esta_pago",
+   "args": [
+    {
+     "id": 7,
+     "cliente": "Caio",
+     "status": "aberto",
+     "data": "2026-05-01",
+     "itens": [
+      {
+       "produto": "P",
+       "categoria": "Y",
+       "quantidade": 1,
+       "preco_unitario": 10.0
+      }
+     ]
+    }
+   ],
+   "esperado": false
+  },
+  {
+   "funcao": "aplicar_status",
+   "args": [
+    {
+     "id": 3,
+     "cliente": "Ana",
+     "status": "pago",
+     "data": "2026-04-02",
+     "itens": [
+      {
+       "produto": "P",
+       "categoria": "X",
+       "quantidade": 1,
+       "preco_unitario": 50.0
+      },
+      {
+       "produto": "P",
+       "categoria": "Y",
+       "quantidade": 4,
+       "preco_unitario": 10.0
+      }
+     ]
+    },
+    "cancelado"
+   ],
+   "esperado": {
+    "id": 3,
+    "cliente": "Ana",
+    "status": "cancelado",
+    "data": "2026-04-02",
+    "itens": [
+     {
+      "produto": "P",
+      "categoria": "X",
+      "quantidade": 1,
+      "preco_unitario": 50.0
+     },
+     {
+      "produto": "P",
+      "categoria": "Y",
+      "quantidade": 4,
+      "preco_unitario": 10.0
+     }
+    ]
+   }
+  },
+  {
+   "funcao": "cancelar",
+   "args": [
+    {
+     "id": 3,
+     "cliente": "Ana",
+     "status": "pago",
+     "data": "2026-04-02",
+     "itens": [
+      {
+       "produto": "P",
+       "categoria": "X",
+       "quantidade": 1,
+       "preco_unitario": 50.0
+      },
+      {
+       "produto": "P",
+       "categoria": "Y",
+       "quantidade": 4,
+       "preco_unitario": 10.0
+      }
+     ]
+    }
+   ],
+   "esperado": {
+    "id": 3,
+    "cliente": "Ana",
+    "status": "cancelado",
+    "data": "2026-04-02",
+    "itens": [
+     {
+      "produto": "P",
+      "categoria": "X",
+      "quantidade": 1,
+      "preco_unitario": 50.0
+     },
+     {
+      "produto": "P",
+      "categoria": "Y",
+      "quantidade": 4,
+      "preco_unitario": 10.0
+     }
+    ]
+   }
+  },
+  {
+   "funcao": "adicionar_item",
+   "args": [
+    {
+     "id": 3,
+     "cliente": "Ana",
+     "status": "pago",
+     "data": "2026-04-02",
+     "itens": [
+      {
+       "produto": "P",
+       "categoria": "X",
+       "quantidade": 1,
+       "preco_unitario": 50.0
+      },
+      {
+       "produto": "P",
+       "categoria": "Y",
+       "quantidade": 4,
+       "preco_unitario": 10.0
+      }
+     ]
+    },
+    {
+     "produto": "P",
+     "categoria": "Z",
+     "quantidade": 1,
+     "preco_unitario": 5.0
+    }
+   ],
+   "esperado": {
+    "id": 3,
+    "cliente": "Ana",
+    "status": "pago",
+    "data": "2026-04-02",
+    "itens": [
+     {
+      "produto": "P",
+      "categoria": "X",
+      "quantidade": 1,
+      "preco_unitario": 50.0
+     },
+     {
+      "produto": "P",
+      "categoria": "Y",
+      "quantidade": 4,
+      "preco_unitario": 10.0
+     },
+     {
+      "produto": "P",
+      "categoria": "Z",
+      "quantidade": 1,
+      "preco_unitario": 5.0
+     }
+    ]
+   }
+  },
+  {
+   "funcao": "pedidos_pagos",
+   "args": [
+    [
+     {
+      "id": 1,
+      "cliente": "Ana",
+      "status": "pago",
+      "data": "2026-03-10",
+      "itens": [
+       {
+        "produto": "P",
+        "categoria": "X",
+        "quantidade": 2,
+        "preco_unitario": 100.0
+       }
+      ]
+     },
+     {
+      "id": 2,
+      "cliente": "Ana",
+      "status": "pago",
+      "data": "2026-03-20",
+      "itens": [
+       {
+        "produto": "P",
+        "categoria": "Y",
+        "quantidade": 5,
+        "preco_unitario": 120.0
+       }
+      ]
+     },
+     {
+      "id": 3,
+      "cliente": "Ana",
+      "status": "pago",
+      "data": "2026-04-02",
+      "itens": [
+       {
+        "produto": "P",
+        "categoria": "X",
+        "quantidade": 1,
+        "preco_unitario": 50.0
+       },
+       {
+        "produto": "P",
+        "categoria": "Y",
+        "quantidade": 4,
+        "preco_unitario": 10.0
+       }
+      ]
+     },
+     {
+      "id": 4,
+      "cliente": "Ana",
+      "status": "pago",
+      "data": "2026-04-09",
+      "itens": [
+       {
+        "produto": "P",
+        "categoria": "Y",
+        "quantidade": 1,
+        "preco_unitario": 30.0
+       }
+      ]
+     },
+     {
+      "id": 5,
+      "cliente": "Bia",
+      "status": "pago",
+      "data": "2026-04-15",
+      "itens": [
+       {
+        "produto": "P",
+        "categoria": "Y",
+        "quantidade": 10,
+        "preco_unitario": 5.0
+       }
+      ]
+     },
+     {
+      "id": 6,
+      "cliente": "Bia",
+      "status": "cancelado",
+      "data": "2026-04-20",
+      "itens": [
+       {
+        "produto": "P",
+        "categoria": "X",
+        "quantidade": 1,
+        "preco_unitario": 999.0
+       }
+      ]
+     },
+     {
+      "id": 7,
+      "cliente": "Caio",
+      "status": "aberto",
+      "data": "2026-05-01",
+      "itens": [
+       {
+        "produto": "P",
+        "categoria": "Y",
+        "quantidade": 1,
+        "preco_unitario": 10.0
+       }
+      ]
+     }
+    ]
+   ],
+   "esperado": [
+    {
+     "id": 1,
+     "cliente": "Ana",
+     "status": "pago",
+     "data": "2026-03-10",
+     "itens": [
+      {
+       "produto": "P",
+       "categoria": "X",
+       "quantidade": 2,
+       "preco_unitario": 100.0
+      }
+     ]
+    },
+    {
+     "id": 2,
+     "cliente": "Ana",
+     "status": "pago",
+     "data": "2026-03-20",
+     "itens": [
+      {
+       "produto": "P",
+       "categoria": "Y",
+       "quantidade": 5,
+       "preco_unitario": 120.0
+      }
+     ]
+    },
+    {
+     "id": 3,
+     "cliente": "Ana",
+     "status": "pago",
+     "data": "2026-04-02",
+     "itens": [
+      {
+       "produto": "P",
+       "categoria": "X",
+       "quantidade": 1,
+       "preco_unitario": 50.0
+      },
+      {
+       "produto": "P",
+       "categoria": "Y",
+       "quantidade": 4,
+       "preco_unitario": 10.0
+      }
+     ]
+    },
+    {
+     "id": 4,
+     "cliente": "Ana",
+     "status": "pago",
+     "data": "2026-04-09",
+     "itens": [
+      {
+       "produto": "P",
+       "categoria": "Y",
+       "quantidade": 1,
+       "preco_unitario": 30.0
+      }
+     ]
+    },
+    {
+     "id": 5,
+     "cliente": "Bia",
+     "status": "pago",
+     "data": "2026-04-15",
+     "itens": [
+      {
+       "produto": "P",
+       "categoria": "Y",
+       "quantidade": 10,
+       "preco_unitario": 5.0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "funcao": "faturamento",
+   "args": [
+    [
+     {
+      "id": 1,
+      "cliente": "Ana",
+      "status": "pago",
+      "data": "2026-03-10",
+      "itens": [
+       {
+        "produto": "P",
+        "categoria": "X",
+        "quantidade": 2,
+        "preco_unitario": 100.0
+       }
+      ]
+     },
+     {
+      "id": 2,
+      "cliente": "Ana",
+      "status": "pago",
+      "data": "2026-03-20",
+      "itens": [
+       {
+        "produto": "P",
+        "categoria": "Y",
+        "quantidade": 5,
+        "preco_unitario": 120.0
+       }
+      ]
+     },
+     {
+      "id": 3,
+      "cliente": "Ana",
+      "status": "pago",
+      "data": "2026-04-02",
+      "itens": [
+       {
+        "produto": "P",
+        "categoria": "X",
+        "quantidade": 1,
+        "preco_unitario": 50.0
+       },
+       {
+        "produto": "P",
+        "categoria": "Y",
+        "quantidade": 4,
+        "preco_unitario": 10.0
+       }
+      ]
+     },
+     {
+      "id": 4,
+      "cliente": "Ana",
+      "status": "pago",
+      "data": "2026-04-09",
+      "itens": [
+       {
+        "produto": "P",
+        "categoria": "Y",
+        "quantidade": 1,
+        "preco_unitario": 30.0
+       }
+      ]
+     },
+     {
+      "id": 5,
+      "cliente": "Bia",
+      "status": "pago",
+      "data": "2026-04-15",
+      "itens": [
+       {
+        "produto": "P",
+        "categoria": "Y",
+        "quantidade": 10,
+        "preco_unitario": 5.0
+       }
+      ]
+     },
+     {
+      "id": 6,
+      "cliente": "Bia",
+      "status": "cancelado",
+      "data": "2026-04-20",
+      "itens": [
+       {
+        "produto": "P",
+        "categoria": "X",
+        "quantidade": 1,
+        "preco_unitario": 999.0
+       }
+      ]
+     },
+     {
+      "id": 7,
+      "cliente": "Caio",
+      "status": "aberto",
+      "data": "2026-05-01",
+      "itens": [
+       {
+        "produto": "P",
+        "categoria": "Y",
+        "quantidade": 1,
+        "preco_unitario": 10.0
+       }
+      ]
+     }
+    ]
+   ],
+   "esperado": 970.0
+  },
+  {
+   "funcao": "top_n",
+   "args": [
+    {
+     "b": 10.0,
+     "a": 10.0,
+     "c": 5.0,
+     "d": 12.5
+    },
+    2
+   ],
+   "esperado": [
+    [
+     "d",
+     12.5
+    ],
+    [
+     "a",
+     10.0
+    ]
+   ]
+  },
+  {
+   "funcao": "aplicar_frete",
+   "args": [
+    250.0
+   ],
+   "esperado": 275.0
+  },
+  {
+   "funcao": "aplicar_frete",
+   "args": [
+    300.0
+   ],
+   "esperado": 300.0
+  }
+ ],
+ "variantes": {
+  "A|cliente": {
+   "config": {
+    "eixo": "cliente",
+    "politica": "A",
+    "categoria_promocional": "X"
+   },
+   "taxas": [
+    0.05,
+    0.1,
+    0.0,
+    0.0,
+    0.0,
+    0.1,
+    0.0
+   ],
+   "totais_por_eixo": {
+    "Ana": 920.0,
+    "Bia": 50.0
+   },
+   "top3": [
+    [
+     "Ana",
+     920.0
+    ],
+    [
+     "Bia",
+     50.0
+    ]
+   ],
+   "relatorio": {
+    "faturamento_bruto": 970.0,
+    "faturamento_final": 1000.0,
+    "top3": [
+     [
+      "Ana",
+      920.0
+     ],
+     [
+      "Bia",
+      50.0
+     ]
+    ],
+    "ticket_medio": 194.0,
+    "cancelados": 1
+   }
+  },
+  "A|mes": {
+   "config": {
+    "eixo": "mes",
+    "politica": "A",
+    "categoria_promocional": "X"
+   },
+   "taxas": [
+    0.05,
+    0.1,
+    0.0,
+    0.0,
+    0.0,
+    0.1,
+    0.0
+   ],
+   "totais_por_eixo": {
+    "2026-03": 800.0,
+    "2026-04": 170.0
+   },
+   "top3": [
+    [
+     "2026-03",
+     800.0
+    ],
+    [
+     "2026-04",
+     170.0
+    ]
+   ],
+   "relatorio": {
+    "faturamento_bruto": 970.0,
+    "faturamento_final": 1000.0,
+    "top3": [
+     [
+      "2026-03",
+      800.0
+     ],
+     [
+      "2026-04",
+      170.0
+     ]
+    ],
+    "ticket_medio": 194.0,
+    "cancelados": 1
+   }
+  },
+  "A|categoria": {
+   "config": {
+    "eixo": "categoria",
+    "politica": "A",
+    "categoria_promocional": "X"
+   },
+   "taxas": [
+    0.05,
+    0.1,
+    0.0,
+    0.0,
+    0.0,
+    0.1,
+    0.0
+   ],
+   "totais_por_eixo": {
+    "X": 250.0,
+    "Y": 720.0
+   },
+   "top3": [
+    [
+     "Y",
+     720.0
+    ],
+    [
+     "X",
+     250.0
+    ]
+   ],
+   "relatorio": {
+    "faturamento_bruto": 970.0,
+    "faturamento_final": 1000.0,
+    "top3": [
+     [
+      "Y",
+      720.0
+     ],
+     [
+      "X",
+      250.0
+     ]
+    ],
+    "ticket_medio": 194.0,
+    "cancelados": 1
+   }
+  },
+  "B|cliente": {
+   "config": {
+    "eixo": "cliente",
+    "politica": "B",
+    "categoria_promocional": "X"
+   },
+   "taxas": [
+    0.0,
+    0.04,
+    0.04,
+    0.0,
+    0.08,
+    0.0,
+    0.0
+   ],
+   "totais_por_eixo": {
+    "Ana": 920.0,
+    "Bia": 50.0
+   },
+   "top3": [
+    [
+     "Ana",
+     920.0
+    ],
+    [
+     "Bia",
+     50.0
+    ]
+   ],
+   "relatorio": {
+    "faturamento_bruto": 970.0,
+    "faturamento_final": 1038.4,
+    "top3": [
+     [
+      "Ana",
+      920.0
+     ],
+     [
+      "Bia",
+      50.0
+     ]
+    ],
+    "ticket_medio": 194.0,
+    "cancelados": 1
+   }
+  },
+  "B|mes": {
+   "config": {
+    "eixo": "mes",
+    "politica": "B",
+    "categoria_promocional": "X"
+   },
+   "taxas": [
+    0.0,
+    0.04,
+    0.04,
+    0.0,
+    0.08,
+    0.0,
+    0.0
+   ],
+   "totais_por_eixo": {
+    "2026-03": 800.0,
+    "2026-04": 170.0
+   },
+   "top3": [
+    [
+     "2026-03",
+     800.0
+    ],
+    [
+     "2026-04",
+     170.0
+    ]
+   ],
+   "relatorio": {
+    "faturamento_bruto": 970.0,
+    "faturamento_final": 1038.4,
+    "top3": [
+     [
+      "2026-03",
+      800.0
+     ],
+     [
+      "2026-04",
+      170.0
+     ]
+    ],
+    "ticket_medio": 194.0,
+    "cancelados": 1
+   }
+  },
+  "B|categoria": {
+   "config": {
+    "eixo": "categoria",
+    "politica": "B",
+    "categoria_promocional": "X"
+   },
+   "taxas": [
+    0.0,
+    0.04,
+    0.04,
+    0.0,
+    0.08,
+    0.0,
+    0.0
+   ],
+   "totais_por_eixo": {
+    "X": 250.0,
+    "Y": 720.0
+   },
+   "top3": [
+    [
+     "Y",
+     720.0
+    ],
+    [
+     "X",
+     250.0
+    ]
+   ],
+   "relatorio": {
+    "faturamento_bruto": 970.0,
+    "faturamento_final": 1038.4,
+    "top3": [
+     [
+      "Y",
+      720.0
+     ],
+     [
+      "X",
+      250.0
+     ]
+    ],
+    "ticket_medio": 194.0,
+    "cancelados": 1
+   }
+  },
+  "C|cliente": {
+   "config": {
+    "eixo": "cliente",
+    "politica": "C",
+    "categoria_promocional": "X"
+   },
+   "taxas": [
+    0.07,
+    0.07,
+    0.07,
+    0.07,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "totais_por_eixo": {
+    "Ana": 920.0,
+    "Bia": 50.0
+   },
+   "top3": [
+    [
+     "Ana",
+     920.0
+    ],
+    [
+     "Bia",
+     50.0
+    ]
+   ],
+   "relatorio": {
+    "faturamento_bruto": 970.0,
+    "faturamento_final": 1005.6,
+    "top3": [
+     [
+      "Ana",
+      920.0
+     ],
+     [
+      "Bia",
+      50.0
+     ]
+    ],
+    "ticket_medio": 194.0,
+    "cancelados": 1
+   }
+  },
+  "C|mes": {
+   "config": {
+    "eixo": "mes",
+    "politica": "C",
+    "categoria_promocional": "X"
+   },
+   "taxas": [
+    0.07,
+    0.07,
+    0.07,
+    0.07,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "totais_por_eixo": {
+    "2026-03": 800.0,
+    "2026-04": 170.0
+   },
+   "top3": [
+    [
+     "2026-03",
+     800.0
+    ],
+    [
+     "2026-04",
+     170.0
+    ]
+   ],
+   "relatorio": {
+    "faturamento_bruto": 970.0,
+    "faturamento_final": 1005.6,
+    "top3": [
+     [
+      "2026-03",
+      800.0
+     ],
+     [
+      "2026-04",
+      170.0
+     ]
+    ],
+    "ticket_medio": 194.0,
+    "cancelados": 1
+   }
+  },
+  "C|categoria": {
+   "config": {
+    "eixo": "categoria",
+    "politica": "C",
+    "categoria_promocional": "X"
+   },
+   "taxas": [
+    0.07,
+    0.07,
+    0.07,
+    0.07,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "totais_por_eixo": {
+    "X": 250.0,
+    "Y": 720.0
+   },
+   "top3": [
+    [
+     "Y",
+     720.0
+    ],
+    [
+     "X",
+     250.0
+    ]
+   ],
+   "relatorio": {
+    "faturamento_bruto": 970.0,
+    "faturamento_final": 1005.6,
+    "top3": [
+     [
+      "Y",
+      720.0
+     ],
+     [
+      "X",
+      250.0
+     ]
+    ],
+    "ticket_medio": 194.0,
+    "cancelados": 1
+   }
+  },
+  "D|cliente": {
+   "config": {
+    "eixo": "cliente",
+    "politica": "D",
+    "categoria_promocional": "X"
+   },
+   "taxas": [
+    0.06,
+    0.0,
+    0.06,
+    0.0,
+    0.0,
+    0.06,
+    0.0
+   ],
+   "totais_por_eixo": {
+    "Ana": 920.0,
+    "Bia": 50.0
+   },
+   "top3": [
+    [
+     "Ana",
+     920.0
+    ],
+    [
+     "Bia",
+     50.0
+    ]
+   ],
+   "relatorio": {
+    "faturamento_bruto": 970.0,
+    "faturamento_final": 1052.6,
+    "top3": [
+     [
+      "Ana",
+      920.0
+     ],
+     [
+      "Bia",
+      50.0
+     ]
+    ],
+    "ticket_medio": 194.0,
+    "cancelados": 1
+   }
+  },
+  "D|mes": {
+   "config": {
+    "eixo": "mes",
+    "politica": "D",
+    "categoria_promocional": "X"
+   },
+   "taxas": [
+    0.06,
+    0.0,
+    0.06,
+    0.0,
+    0.0,
+    0.06,
+    0.0
+   ],
+   "totais_por_eixo": {
+    "2026-03": 800.0,
+    "2026-04": 170.0
+   },
+   "top3": [
+    [
+     "2026-03",
+     800.0
+    ],
+    [
+     "2026-04",
+     170.0
+    ]
+   ],
+   "relatorio": {
+    "faturamento_bruto": 970.0,
+    "faturamento_final": 1052.6,
+    "top3": [
+     [
+      "2026-03",
+      800.0
+     ],
+     [
+      "2026-04",
+      170.0
+     ]
+    ],
+    "ticket_medio": 194.0,
+    "cancelados": 1
+   }
+  },
+  "D|categoria": {
+   "config": {
+    "eixo": "categoria",
+    "politica": "D",
+    "categoria_promocional": "X"
+   },
+   "taxas": [
+    0.06,
+    0.0,
+    0.06,
+    0.0,
+    0.0,
+    0.06,
+    0.0
+   ],
+   "totais_por_eixo": {
+    "X": 250.0,
+    "Y": 720.0
+   },
+   "top3": [
+    [
+     "Y",
+     720.0
+    ],
+    [
+     "X",
+     250.0
+    ]
+   ],
+   "relatorio": {
+    "faturamento_bruto": 970.0,
+    "faturamento_final": 1052.6,
+    "top3": [
+     [
+      "Y",
+      720.0
+     ],
+     [
+      "X",
+      250.0
+     ]
+    ],
+    "ticket_medio": 194.0,
+    "cancelados": 1
+   }
+  }
+ }
+}
